@@ -22,4 +22,26 @@ class Game
       display_scores
       switch_turns
     end
-    
+
+    announce_winner
+  end
+
+  private
+
+  attr_reader :player1, :player2
+  attr_accessor :current_player
+
+  def game_over?
+    player1.alive? && player2.alive?
+  end
+
+  def display_scores 
+    puts "#{player1.name}:#{player1.lives}/3 VS #{player2.name}: #{player2.lives}/3"
+  end
+
+  def switch_turns
+    @current_player = current_player ==player1 ? player2 : player1
+  end
+
+  
+
