@@ -1,53 +1,34 @@
+require "./player.rb"
+require './question.rb'
 class Game 
+  attr_accessor :in_progress
+
   def initialize
-    @player1 = Player.new("Player 1")
-    @player2 = Player.new("Player 2")
-    @current_player = @player1
+   player1_name = self.ask_name("Player 1, whats your name?")
+   player2_name = self.ask_name("Player 2, whats your name?")
+   
+
+   @in_progress = 0
+   @player1 = Player.new player1_name
+
+   @player2 = Player.new player2_name
+   @winner
+   @rounds
   end
 
-  def start 
-
-    until game_over?
-      question = Question.new 
-      puts "#{current_player.name}: #{question.text}"
-
-      user_answer = gets.chomp
-      if question.correct?(user_answer)
-        puts "Correct!"
-      else
-        puts "Seriously?No!! #{current_player} loses a life"
-        current_player.lose_life
-      end
-
-      display_scores
-      switch_turns
+  def ask_name(prompt)
+    puts prompt
+    name = gets.chomp
+    while name.empty?
+      puts "Sorry, invalid name, try again"
+      name = gets.chomp
     end
-
-    announce_winner
+  "Hello #{name}"
   end
 
-  private
 
-  attr_reader :player1, :player2
-  attr_accessor :current_player
-
-  def game_over?
-    player1.alive? && player2.alive?
-  end
-
-  def display_scores 
-    puts "#{player1.name}:#{player1.lives}/3 VS #{player2.name}: #{player2.lives}/3"
-  end
-
-  def switch_turns
-    @current_player = current_player ==player1 ? player2 : player1
-  end
-
-  def announce_winner 
-    winner = player1.alive? ? player1 : player2
-    puts "#{winner} wins with a score #{winner.lives}/3"
-    puts "GAME OVER!"
-  end
+  # player enters the name
+ 
 end
 
 
