@@ -1,7 +1,5 @@
-require "./player.rb"
-require './question.rb'
 class Game 
-  attr_accessor :in_progress
+  attr_accessor :in_progress, :player1, :player2 
 
   def initialize
    player1_name = self.ask_name("Player 1, whats your name?")
@@ -12,6 +10,9 @@ class Game
    @player1 = Player.new player1_name
 
    @player2 = Player.new player2_name
+
+   self.pick_starter
+
    @winner
    @rounds
   end
@@ -25,6 +26,16 @@ class Game
     end
   "Hello #{name}"
   end
+
+  def pick_starter 
+    starter_player = rand(1..2)
+    if starter_player == 1
+      self.player1.turn = true
+    else 
+      self.player2.turn = true
+    end
+  end
+
 
 
   # player enters the name
