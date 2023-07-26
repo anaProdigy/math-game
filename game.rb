@@ -43,5 +43,12 @@ class Game
     @current_player = current_player ==player1 ? player2 : player1
   end
 
-  
+  def announce_winner 
+    winner = player1.alive? ? player1 : player2
+    puts "#{winner} wins with a score #{winner.lives}/3"
+    puts "GAME OVER!"
+  end
+end
+
+
 
