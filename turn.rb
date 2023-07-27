@@ -34,7 +34,7 @@ class Turn
 # sample will shuffle the array randomly
 # creates 2 questions for 2 players for one round
   def each_round
-    @players.each do |player|  
+    @players.rotate.each do |player|  
       @current_player = player
       @question = Question.new
       ask_question
