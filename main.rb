@@ -1,6 +1,6 @@
-# require "./player.rb"
-# require './question.rb'
-# require './game.rb'
+require "./player.rb"
+require './question.rb'
+require './game.rb'
 
 # class Test
 #   def initialize
@@ -32,7 +32,7 @@ while game.in_progress
   #start playing turn logic
   game.start_turn
  # check if anybody won if yes stop game
-
+ 
   game.winner
 end
 

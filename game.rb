@@ -1,3 +1,5 @@
+require_relative 'turn'
+
 class Game 
   attr_accessor :in_progress, :player1, :player2, :round, :winner
 
@@ -25,15 +27,18 @@ class Game
       puts "Sorry, invalid name, try again"
       name = gets.chomp
     end
-  "Hello #{name}"
+  "#{name}"
   end
 
-  def pick_starter 
+  def pick_starter
     starter_player = rand(1..2)
+    puts "#{starter_player} Starter player"
     if starter_player == 1
       self.player1.turn = true
+      self.player2.turn = false
     else 
       self.player2.turn = true
+      self.player1.turn = false
     end
   end
 
