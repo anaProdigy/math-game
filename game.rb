@@ -12,7 +12,7 @@ class Game
 
    @in_progress = true
  
-   self.pick_starter
+  #  self.pick_starter
 
    puts "The game started"
 
@@ -30,20 +30,22 @@ class Game
   "#{name}"
   end
 
-  def pick_starter
-    starter_player = rand(1..2)
-    puts "#{starter_player} Starter player"
-    if starter_player == 1
-      self.player1.turn = true
-      self.player2.turn = false
-    else 
-      self.player2.turn = true
-      self.player1.turn = false
-    end
-  end
+  # def pick_starter
+  #   starter_player = rand(1..2)
+  #   puts "#{starter_player} Starter player"
+  #   if starter_player == 1
+  #     self.player1.turn = true
+  #     self.player2.turn = false
+  #   else 
+  #     self.player2.turn = true
+  #     self.player1.turn = false
+  #   end
+  # end
 
   def start_turn
-    Turn.new([self.player1, self.player2], Question.new, self.round)
+    turn = Turn.new([self.player1, self.player2], Question.new, self.round)
+    puts "-- Round ##{self.round} --"
+    turn.each_round
     self.round += 1
   end
 

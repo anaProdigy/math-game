@@ -7,23 +7,11 @@ class Turn
     @players = players
     @question = question
     @round = round
-    
 
-    if players[0].turn
-      @current_player = players[0]
-      @next_player = players[1]
-    else
-      @current_player = players[1]
-      @next_player = players[0]
-    end
-
-    self.ask_question
-    self.compare_answers
   end
 
-  def ask_question 
-    puts "-- Round ##{self.round} --"
-    puts "#{self.current_player.name} #{self.question.genarate_question}"
+  def ask_question
+    puts "#{@current_player.name} #{self.question.genarate_question}"
   end
 
   def compare_answers
@@ -38,5 +26,17 @@ class Turn
    self.current_player.turn = false
    self.next_player = true
    puts "Player1 #{self.players[0].name} has #{self.players[0].lives}/3 VS Player2 #{self.players[1].name} has #{self.players[1].lives}/3"
+  end
+
+  def number_players
+    @players.length
+  end
+# sample will shuffle the array randomly
+  def each_round
+    @players.sample.each do |player|  
+      @current_player = player
+      ask_question
+      compare_answers
+    end
   end
 end
