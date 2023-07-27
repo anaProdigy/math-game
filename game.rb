@@ -1,20 +1,21 @@
 class Game 
-  attr_accessor :in_progress, :player1, :player2 
+  attr_accessor :in_progress, :player1, :player2, :round
 
   def initialize
+      #ask players for name
    player1_name = self.ask_name("Player 1, whats your name?")
-   player2_name = self.ask_name("Player 2, whats your name?")
-   
-
-   @in_progress = 0
    @player1 = Player.new player1_name
-
+   player2_name = self.ask_name("Player 2, whats your name?")
    @player2 = Player.new player2_name
 
+   @in_progress = true
+ 
    self.pick_starter
 
+   puts "The game started"
+
    @winner
-   @rounds
+   @round = 1
   end
 
   def ask_name(prompt)
@@ -36,9 +37,16 @@ class Game
     end
   end
 
+  def start_turn
+    Turn.new([self.player1, self.player2], Question.new, self.round)
+    self.round += 1
+  end
 
 
-  # player enters the name
+
+
+
+  
  
 end
 

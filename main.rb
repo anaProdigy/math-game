@@ -8,8 +8,9 @@ game = Game.new
 
 
 # Call the start method on the game instance
-# while game.in_progress 
-#   #start playing turn logic
-#  # check if anybody won if yes stop game
-# end
+while game.in_progress 
+  #start playing turn logic
+  game.start_turn
+ # check if anybody won if yes stop game
+end
 puts game.in_progress
