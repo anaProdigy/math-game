@@ -1,5 +1,5 @@
 class Game 
-  attr_accessor :in_progress, :player1, :player2, :round
+  attr_accessor :in_progress, :player1, :player2, :round, :winner
 
   def initialize
       #ask players for name
@@ -14,7 +14,7 @@ class Game
 
    puts "The game started"
 
-   @winner
+   @winner = nil
    @round = 1
   end
 
@@ -42,8 +42,21 @@ class Game
     self.round += 1
   end
 
-
-
+  # who wins
+def winner
+   if self.player1.lives == 0
+      self.winner = self.player2
+      self.stop_game
+    elsif self.player2.lives == 0
+      self.winner = self.player1
+      self.stop_game
+    end
+end
+  # end game
+def stop_game
+  self.in_progress = false
+  puts "GAME OVER!"
+end
 
 
   
