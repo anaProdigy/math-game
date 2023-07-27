@@ -47,6 +47,7 @@ class Game
     puts "-- Round ##{self.round} --"
     turn.each_round
     self.round += 1
+     puts "#{player1.name}:#{player1.lives}/3 VS #{player2.name}: #{player2.lives}/3"
   end
 
   # who wins
