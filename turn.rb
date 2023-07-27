@@ -22,16 +22,12 @@ class Turn
     self.current_player.lives -= 1
     puts "YOU ARE NOT GOOD AT MATH #{self.current_player.name}!"
    end
-
-  #  self.current_player.turn = false
-  #  self.next_player = true
-  #  puts "Player1 #{self.players[0].name} has #{self.players[0].lives}/3 VS Player2 #{self.players[1].name} has #{self.players[1].lives}/3"
   end
 
   def number_players
     @players.length
   end
-# sample will shuffle the array randomly
+# sample will rotate the array 
 # creates 2 questions for 2 players for one round
   def each_round
     @players.rotate.each do |player|  
