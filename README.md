@@ -16,6 +16,6 @@ The Math Game is written in Ruby, so you will need the Ruby interpreter to execu
 ruby main.rb
 ```
 
- ```md
-    ![game example](CL_example.png)
-    ```
+ 
+   ![game example](CL_example.png)
+  
